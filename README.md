@@ -18,6 +18,6 @@
 
 Una volta che hai configurato tutto, ogni volta che qualcuno clona il repository e avvia `docker-compose up --build`, Docker compila e avvia i vari servizi (backend, frontend e database) automaticamente.
 
-### Conclusione
+## Conclusione
 
 Se hai domande o hai bisogno di ulteriore aiuto, fammi sapere!
