@@ -10,8 +10,8 @@
 1. Clona la repository:
 
    ```bash
-   git clone https://github.com/tuo-username/my-project.git
-   cd my-project
+   git clone https://github.com/aspagnuolo1/chinook-security-project.git
+   cd chinook-security-project
 2. Costruisci e avvia il container
   
 ###**Avviare il progetto**
