@@ -7,6 +7,7 @@ WORKDIR /app
 # Copia il package.json e installa le dipendenze
 COPY package.json package-lock.json ./
 RUN npm install
+RUN npm install axios
 
 # Copia il resto del codice sorgente
 COPY . .
@@ -20,4 +21,4 @@ RUN npm install -g serve
 EXPOSE 5173
 
 # Esegui il frontend
-CMD ["serve", "-s", "build", "-l", "5173"]
+CMD ["serve", "-s", "build", "-l", "5173", "--single"]

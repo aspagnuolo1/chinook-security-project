@@ -8,5 +8,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['axios'],  // Se vuoi che axios venga esternalizzato
     },
-  }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 5173, // opzionale, specifica il porto se necessario
+  },
 })
