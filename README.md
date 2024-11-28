@@ -11,7 +11,7 @@
 
    ```bash
    git clone https://github.com/aspagnuolo1/chinook-security-project.git
-   cd chinook-security-project
+   cd chinook-security-project/chinook/docker
 2. Costruisci e avvia il container
   
 ##**Avviare il progetto**
