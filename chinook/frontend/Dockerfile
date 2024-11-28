@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copia il package.json e installa le dipendenze
 COPY package.json package-lock.json ./
-RUN npm install -g vite
 RUN npm install
 
 # Copia il resto del codice sorgente
