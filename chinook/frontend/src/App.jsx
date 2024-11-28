@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Routes, Link, Navigate, redirect, useNav
 import CustomerList from './components/CustomerList';
 import Login from './components/Login';
 import ChangePassword from './components/ChangePassword';
-import './app.css';
+import './App.css';
 import axios from "axios";
 
 const App = () => {

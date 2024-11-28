@@ -1,11 +1,12 @@
 # Usa un'immagine base di Node.js
-FROM node:16
+FROM node:18
 
 # Imposta la directory di lavoro
 WORKDIR /app
 
 # Copia il package.json e installa le dipendenze
 COPY package.json package-lock.json ./
+RUN npm install -g vite
 RUN npm install
 
 # Copia il resto del codice sorgente
@@ -17,5 +18,7 @@ RUN npm run build
 # Usa un server HTTP per servire i file
 RUN npm install -g serve
 
+EXPOSE 5173
+
 # Esegui il frontend
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build", "-l", "5173"]

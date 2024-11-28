@@ -1,11 +1,14 @@
 # Usa un'immagine base di Java
-FROM openjdk:21-jre-slim
+FROM openjdk:21-jdk-slim
 
 # Copia il file JAR dal progetto (compilato in fase di build)
-COPY target/my-backend.jar /usr/app/my-backend.jar
+COPY ./target/backend-1.0-SNAPSHOT.jar /usr/app/backend-1.0-SNAPSHOT.jar
+COPY target/*.jar /usr/app/
 
 # Imposta il working directory
 WORKDIR /usr/app
 
+EXPOSE 8080
+
 # Comando per avviare l'applicazione
-CMD ["java", "-jar", "my-backend.jar"]
+CMD ["java", "-jar", "backend-1.0-SNAPSHOT.jar"]
