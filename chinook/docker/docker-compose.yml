@@ -1,33 +1,52 @@
 version: '3.8'
-
 services:
   # Backend Java
   backend:
     build:
-      context: ./backend
+      context: ./../backend
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/mydb
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/chinook
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_PASSWORD=password
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_NAME=chinook
     depends_on:
       - db
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      retries: 5
+      start_period: 60s
+      timeout: 10s
 
   # Frontend React
   frontend:
     build:
-      context: ./frontend
+      context: ./../frontend
     ports:
-      - "3000:3000"
+      - "5173:5173"
     depends_on:
       - backend
-
   # Database (MySQL)
   db:
     image: mysql:8.0
+    container_name: chinook-mysql-new
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: chinook
+      MYSQL_ALLOW_EMPTY_PASSWORD:
+      MYSQL_RANDOM_ROOT_PASSWORD:
     ports:
       - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  db-data:
