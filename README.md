@@ -4,6 +4,8 @@
 
 - Docker
 - Docker Compose
+- npm e Node.js
+- java
 
 ## Come avviare il progetto
 
