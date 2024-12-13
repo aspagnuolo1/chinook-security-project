@@ -439,4 +439,20 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+use chinook;
+
+CREATE USER 'chinook'@'%' IDENTIFIED BY 'chinook_pw';
+
+GRANT SELECT, UPDATE ON employee TO 'chinook'@'%';
+
+GRANT SELECT, UPDATE ON customer TO 'chinook'@'%';
+
+GRANT SELECT, UPDATE, INSERT ON password_change TO 'chinook'@'%';
+
+GRANT SELECT, UPDATE, INSERT ON password_change_seq TO 'chinook'@'%';
+
+GRANT SELECT, INSERT ON log TO 'chinook'@'%';
+
+FLUSH PRIVILEGES;
+
 -- Dump completed on 2024-11-27 21:41:54

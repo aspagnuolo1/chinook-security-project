@@ -70,6 +70,7 @@ public class DashboardController {
         } else {
             // Se il ruolo non è riconosciuto, restituisci UNAUTHORIZED
             log.setMessage("Dashboard access not permitted");
+            loggingService.logActivity(log);
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
@@ -82,6 +83,7 @@ public class DashboardController {
         DashboardResponse dashboardResponse = new DashboardResponse();
         dashboardResponse.setCustomers(dtoCustomers);
         log.setMessage("Dashboard retrieved successfully");
+        loggingService.logActivity(log);
         return new ResponseEntity<>(dashboardResponse, HttpStatus.OK);
     }
 
